@@ -1,0 +1,29 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+spring:
+  # mysql
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3308/security?serverTimezone=Asia/Seoul
+    username: sysim
+    password: sysim
+  # jpa
+  jpa:
+    hibernate:
+      ddl-auto: create
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+  # mustech
+  mvc:
+    view:
+      prefix: /templates/
+      suffix: .mustache
+
