@@ -22,6 +22,10 @@ public class User {
 
     private String role; //ROLE_USER, ROLE_ADMIN
 
+    private String provider; //SNS 채널
+
+    private String providerId; //SNS 내 회원번호(ID)
+
     @CreationTimestamp
     private Timestamp createDate;
 }

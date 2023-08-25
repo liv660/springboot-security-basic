@@ -1,5 +1,7 @@
 package com.cos.security1.config;
 
+import com.cos.security1.config.oauth.PrincipalOauthUserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -9,8 +11,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
+@RequiredArgsConstructor
 @EnableMethodSecurity(securedEnabled = true, prePostEnabled = true) //secured, preAuthorize, postAuthorize 활성화
 public class SecurityConfig {
+
+    private final PrincipalOauthUserService principalOauthUserService;
 
     @Bean
     public BCryptPasswordEncoder encodePassword() {
@@ -32,7 +37,9 @@ public class SecurityConfig {
                 .defaultSuccessUrl("/")
                 .and()
                 .oauth2Login()
-                .loginPage("/loginForm");
+                .loginPage("/loginForm")
+                .userInfoEndpoint()
+                .userService(principalOauthUserService);
         return http.build();
     }
 }
