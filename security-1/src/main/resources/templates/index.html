@@ -2,9 +2,42 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>인덱스 페이지</title>
+    <title>index</title>
 </head>
 <body>
-<h1>인덱스페이지입니다.</h1>
+<div id="box">
+    <div>
+        <h1>Index</h1>
+        <hr>
+        {{#session}}
+        <div>
+            <p>Hello, {{session}}</p>
+            <p><button type="button" onclick="location.href='logout'">로그아웃</button></p>
+        </div>
+        {{/session}}
+        {{^session}}
+        <div class="buttons">
+            <div>
+                <button type="button" onclick="location.href='loginForm'">로그인</button>
+            </div>
+            <div>
+                <button type="button" onclick="location.href='joinForm'">회원가입</button>
+            </div>
+        </div>
+        {{/session}}
+    </div>
+</div>
 </body>
+<style>
+    #box {
+        position: relative;
+        margin: 20% 35%;
+    }
+    h1 { margin: 0 }
+    .buttons { text-align: center}
+    div > button {
+        margin: 1% 0;
+        width: 100px;
+    }
+</style>
 </html>

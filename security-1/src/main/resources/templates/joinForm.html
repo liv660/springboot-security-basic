@@ -2,16 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>회원가입 페이지</title>
+    <title>Join</title>
 </head>
 <body>
-<h1>회원가입 페이지</h1>
-<hr/>
-<form action="/join" method="post">
-  <input type="text"name="username"placeholder="Username"/><br/>
-  <input type="password"name="password"placeholder="Password"/><br/>
-  <input type="email"name="email"placeholder="email"/><br/>
-  <button>회원가입</button>
-</form>
+<div id="box">
+    <h1>회원가입</h1>
+    <hr/>
+    <form action="/join" method="post">
+        <input type="text"name="username"placeholder="Username"/><br/>
+        <input type="password"name="password"placeholder="Password"/><br/>
+        <input type="email"name="email"placeholder="email"/><br/>
+        <button type="button">회원가입</button>
+        <button type="button" onclick="location.href='/'">Home</button>
+    </form>
+</div>
 </body>
+<style>
+    #box {
+        position: relative;
+        margin: 20% 35%;
+    }
+    h1 { margin: 0 }
+    form  { text-align: center }
+    input, button { margin: 1% 0}
+</style>
 </html>
