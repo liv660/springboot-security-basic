@@ -12,6 +12,8 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 @Service
 @RequiredArgsConstructor
 public class PrincipalOauthUserService extends DefaultOAuth2UserService {
@@ -36,10 +38,11 @@ public class PrincipalOauthUserService extends DefaultOAuth2UserService {
             System.out.println("Google 로그인 요청");
 //            new GoogleUserInfo(oAuth2User.getAttributes());
             oAuth2UserInfo = new GoogleUserInfo(oAuth2User.getAttributes());
+        } else if (userRequest.getClientRegistration().getRegistrationId().equals("naver")) {
+            System.out.println("Naver 로그인 요청");
+            new NaverUserInfo(oAuth2User.getAttributes());
+            oAuth2UserInfo = new NaverUserInfo((Map<String, Object>) oAuth2User.getAttributes().get("response"));
         }
-        /**
-         * 다른 SNS 로그인 (생략)
-         */
 
         String provider = oAuth2UserInfo.getProvider();
         String providerId = oAuth2UserInfo.getProviderId();
